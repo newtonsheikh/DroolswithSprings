@@ -1,0 +1,28 @@
+package KieRule;
+import com.example.demo.Device;
+
+rule "BharatBenz"
+
+when
+orderObject : Device(truck=="BharatBenz" && temperature>1000);
+o : Device(truck=="BharatBenz" && temperature<1000);
+then
+orderObject.setAlert("Hot");
+o.setAlert("Cold");
+end;
+
+rule "Fuso"
+
+when
+orderObject : Device(truck=="Fuso" && temperature>2000);
+then
+orderObject.setAlert("Cold");
+end;
+
+rule "Setra"
+
+when
+orderObject : Device(truck=="Setra" && temperature>30000000);
+then
+orderObject.setAlert("Hot");
+end;
